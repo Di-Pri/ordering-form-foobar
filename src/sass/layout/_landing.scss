@@ -1,4 +1,6 @@
+@use "../base" as b;
+
 .App {
-  color: lightblue;
+  color: b.$landing-button-bg;
   text-align: center;
 }
