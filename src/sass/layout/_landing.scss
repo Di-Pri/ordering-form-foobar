@@ -43,3 +43,34 @@ h1 {
   text-align: left;
   margin-right: calc(-15px - 1.5vw);
 }
+
+@media screen and (max-width: 1000px) {
+  .lure {
+    img {
+      height: calc(24vh + 22vw);
+    }
+  }
+
+  h1 {
+    font-size: calc(2vh + 6.5vw);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .App {
+    & > img {
+      width: 65vw;
+    }
+  }
+
+  .lure {
+    img {
+      height: calc(27vh + 17vw);
+    }
+  }
+
+  h1 {
+    font-size: 9vw;
+    margin-right: calc(-10px - 2vw);
+  }
+}
