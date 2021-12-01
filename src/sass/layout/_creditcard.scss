@@ -1,0 +1,17 @@
+@use "../base" as b;
+
+body {
+  background-color: b.$bg-color;
+  color: b.$main-font-color;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 400px;
+    width: 80%;
+  }
+}

@@ -1,0 +1,60 @@
+@use "../base" as b;
+
+body {
+  background-color: b.$bg-color;
+  color: b.$main-font-color;
+}
+
+.mobilepay_wrapper {
+  max-width: 600px;
+  width: 60%;
+  margin: auto;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 400px;
+    width: 80%;
+  }
+}
+
+main.mobilepay {
+  .backlink_wrapper {
+    margin: calc(2rem + 1vw) 0;
+
+    .backlink {
+      font-size: b.$backlink-font-size;
+      cursor: pointer;
+
+      img {
+        max-width: 0.7rem;
+        margin-right: 0.4rem;
+      }
+    }
+  }
+
+  h1 {
+    font-size: b.$heading-font-size;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .picture {
+    margin-top: calc(2rem + 1vw);
+    display: flex;
+    justify-content: center;
+
+    img {
+      max-width: 400px;
+      width: 50%;
+      @media only screen and (max-width: 600px) {
+        width: 80%;
+      }
+    }
+  }
+}
