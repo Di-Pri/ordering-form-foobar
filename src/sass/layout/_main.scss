@@ -1,0 +1,19 @@
+@use "../base" as b;
+
+.Main {
+  background-color: b.$bg-color;
+  color: b.$main-font-color;
+}
+
+.ProductList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15rem;
+  margin-inline: 5rem;
+  article {
+    text-align: center;
+    img {
+      max-width: 100%;
+    }
+  }
+}
