@@ -1,7 +1,42 @@
+function Product() {
+  return (
+    <article>
+      <img src="images/El-Hefe.png" alt="El Hefe beer glass" />
+      <h2>El Hefe</h2>
+      <p>80 kr</p>
+      <button>About</button>
+    </article>
+  );
+}
+
+function ProductList() {
+  return (
+    <section className="ProductList">
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+    </section>
+  );
+}
+
+function TotalPrice() {
+  return (
+    <div>
+      <h3>
+        Total: <span></span> kr
+      </h3>
+    </div>
+  );
+}
+
 function Main() {
   return (
     <div className="Main">
-      <section className="ProductList">
+      <ProductList />
+      <TotalPrice />
+      {/* <section className="ProductList">
         <article>
           <img src="images/El-Hefe.png" alt="El Hefe beer glass" />
           <h2>El Hefe</h2>
@@ -26,7 +61,7 @@ function Main() {
           <p>80 kr</p>
           <button>About</button>
         </article>
-      </section>
+      </section> */}
     </div>
   );
 }
