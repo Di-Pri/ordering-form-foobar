@@ -15,3 +15,32 @@ header {
     width: 80%;
   }
 }
+
+.creditcard_wrapper {
+  max-width: 600px;
+  width: 60%;
+  margin: auto;
+}
+
+main.creditcard {
+  .backlink_wrapper {
+    margin: calc(2rem + 1vw) 0;
+
+    .backlink {
+      font-size: b.$backlink-font-size;
+      cursor: pointer;
+
+      img {
+        max-width: 0.7rem;
+        margin-right: 0.4rem;
+      }
+    }
+  }
+
+  h1 {
+    font-size: b.$heading-font-size;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+  }
+}
