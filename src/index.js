@@ -10,9 +10,9 @@ import Creditcard from "./components/Creditcard";
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    {/* <Confirmation /> */}
+    <Confirmation />
     {/* <Mobilepay /> */}
-    <Creditcard />
+    {/* <Creditcard /> */}
   </React.StrictMode>,
   document.getElementById("root")
 );
