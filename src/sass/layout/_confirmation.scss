@@ -1,8 +1,10 @@
 @use "../base" as b;
 
-body {
+.Confirmation {
   background-color: b.$bg-color;
   color: b.$main-font-color;
+  margin-left: clamp(1rem, 2vw, 3vw);
+  margin-right: clamp(1rem, 2vw, 3vw);
 }
 
 .Confirmation header {
@@ -21,8 +23,8 @@ body {
   display: grid;
   grid-template-columns: 0.4fr 0.6fr;
   grid-template-rows: min-content 1fr;
-  margin-left: clamp(1rem, 3vw, 5vw);
-  margin-right: clamp(1rem, 3vw, 5vw);
+  column-gap: 2rem;
+
   @media only screen and (max-width: 500px) {
     grid-template-columns: 1fr;
     grid-template-rows: min-content min-content min-content;
@@ -63,8 +65,8 @@ body {
     align-items: flex-end;
     @media only screen and (max-width: 500px) {
       align-items: flex-start;
-      margin-left: 1rem;
-      margin-bottom: 2rem;
+      // margin-left: 1rem;
+      margin-bottom: 1rem;
     }
 
     .wrapper {
@@ -106,23 +108,25 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    margin-left: calc(2rem + 3vw);
+    margin-left: calc(2rem + 5vw);
     @media only screen and (max-width: 500px) {
       grid-column: 1 / span 1;
       grid-row: 3 / span 1;
       align-items: center;
       justify-content: flex-start;
+      margin-left: 0;
     }
 
     img {
       // max-width: 350px;
       // width: 70%;
-      height: 50vh;
+      max-height: 50vh;
+      height: 80%;
       // height: 80%;
       width: auto;
-      @media only screen and (max-width: 500px) {
+      @media only screen and (max-width: 610px) {
         // width: 50%;
-        height: 30vh;
+        height: 28vh;
         width: auto;
       }
     }
