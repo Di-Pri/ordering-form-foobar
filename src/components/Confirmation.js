@@ -3,9 +3,9 @@ import Header from "./Header";
 
 function Confirmation() {
   return (
-    <section>
+    <section className="Confirmation">
       <Header />
-      <main className="confirmation">
+      <main>
         <div className="message">
           <h1>Thank you!</h1>
           <p>
