@@ -28,14 +28,14 @@ export default function Product(props) {
   }
 
   return (
-    <article>
+    <article className="Product">
       <section>
         <img src={beerImage} alt={beerImageAlt} />
         <h2>{props.name}</h2>
-        <p>80 kr</p>
+        <h3>80 kr</h3>
         <button>About</button>
       </section>
-      <section>
+      <section className="plusMinus">
         <button onClick={plus}>+</button>
         <p>{amount}</p>
         <button onClick={minus}>-</button>

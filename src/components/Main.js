@@ -8,6 +8,7 @@ function Main() {
   };
   return (
     <div className="Main">
+      <img className="mainLogo" src="icons/foobar-logo.svg" alt="Foobar logo" />
       <ProductList product={product} />
       <TotalPrice />
       {/* <section className="ProductList">
