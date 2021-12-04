@@ -36,9 +36,9 @@ export default function Product(props) {
         <button>About</button>
       </section>
       <section className="plusMinus">
-        <button onClick={plus}>+</button>
+        <button onClick={plus}></button>
         <p>{amount}</p>
-        <button onClick={minus}>-</button>
+        <button onClick={minus}></button>
       </section>
     </article>
   );

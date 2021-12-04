@@ -1,1 +1,33 @@
 @use "../base" as b;
+
+// Styling plus and minus buttons
+
+.plusMinus button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  background-color: b.$plus-minus-bg;
+  box-shadow: 0px 0px 3px 1px #000;
+}
+
+@mixin minus {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 5px;
+  background-color: b.$plus-minus-color;
+  border-radius: 5px;
+}
+
+.plusMinus button::before {
+  @include minus;
+}
+
+.plusMinus button:nth-of-type(1)::after {
+  @include minus;
+  transform: rotate(90deg);
+}

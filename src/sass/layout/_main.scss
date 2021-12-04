@@ -8,13 +8,13 @@
 
 .ProductList {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 10rem;
   // display: flex;
   // flex-wrap: wrap;
   // gap: 10rem;
   // justify-content: space-evenly;
-  margin-inline: 10rem;
+  margin-inline: 5rem;
 }
 
 .Product {
