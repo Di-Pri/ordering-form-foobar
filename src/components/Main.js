@@ -1,22 +1,21 @@
-function Product() {
+function Product(props) {
+  console.log(props);
+  const beerImage = `images/${props.label}`;
+  const beerImageAlt = `Glass with ${props.name} label`;
   return (
     <article>
-      <img src="images/El-Hefe.png" alt="El Hefe beer glass" />
-      <h2>El Hefe</h2>
-      <p>80 kr</p>
+      <img src={beerImage} alt={beerImageAlt} />
+      <h2>{props.name}</h2>
+      <p>{props.price} kr</p>
       <button>About</button>
     </article>
   );
 }
 
-function ProductList() {
+function ProductList(props) {
   return (
     <section className="ProductList">
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
+      <Product {...props.product} />
     </section>
   );
 }
@@ -32,9 +31,14 @@ function TotalPrice() {
 }
 
 function Main() {
+  const product = {
+    name: "El Hefe",
+    price: 80,
+    label: "elhefe.png",
+  };
   return (
     <div className="Main">
-      <ProductList />
+      <ProductList product={product} />
       <TotalPrice />
       {/* <section className="ProductList">
         <article>
