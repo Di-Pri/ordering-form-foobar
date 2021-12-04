@@ -1,39 +1,9 @@
-function Product(props) {
-  console.log(props);
-  const beerImage = `images/${props.label}`;
-  const beerImageAlt = `Glass with ${props.name} label`;
-  return (
-    <article>
-      <img src={beerImage} alt={beerImageAlt} />
-      <h2>{props.name}</h2>
-      <p>{props.price} kr</p>
-      <button>About</button>
-    </article>
-  );
-}
-
-function ProductList(props) {
-  return (
-    <section className="ProductList">
-      <Product {...props.product} />
-    </section>
-  );
-}
-
-function TotalPrice() {
-  return (
-    <div>
-      <h3>
-        Total: <span></span> kr
-      </h3>
-    </div>
-  );
-}
+import ProductList from "./ProductList";
+import TotalPrice from "./TotalPrice";
 
 function Main() {
   const product = {
     name: "El Hefe",
-    price: 80,
     label: "elhefe.png",
   };
   return (
