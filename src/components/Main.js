@@ -2,41 +2,38 @@ import ProductList from "./ProductList";
 import TotalPrice from "./TotalPrice";
 
 function Main() {
-  const product = {
-    name: "El Hefe",
-    label: "elhefe.png",
-  };
+  const products = [
+    {
+      id: 0,
+      name: "El Hefe",
+      label: "elhefe.png",
+    },
+    {
+      id: 1,
+      name: "Fairy Tale Ale",
+      label: "fairytaleale.png",
+    },
+    {
+      id: 2,
+      name: "GitHop",
+      label: "githop.png",
+    },
+    {
+      id: 3,
+      name: "Hollaback Lager",
+      label: "hollaback.png",
+    },
+    {
+      id: 4,
+      name: "Hoppily Ever After",
+      label: "hoppilyeverafter.png",
+    },
+  ];
   return (
     <div className="Main">
       <img className="mainLogo" src="icons/foobar-logo.svg" alt="Foobar logo" />
-      <ProductList product={product} />
+      <ProductList products={products} />
       <TotalPrice />
-      {/* <section className="ProductList">
-        <article>
-          <img src="images/El-Hefe.png" alt="El Hefe beer glass" />
-          <h2>El Hefe</h2>
-          <p>80 kr</p>
-          <button>About</button>
-        </article>
-        <article>
-          <img src="images/Fairy-Tale-Ale.png" alt="Fairy Tale Ale beer glass" />
-          <h2>Fairy Tale Ale</h2>
-          <p>80 kr</p>
-          <button>About</button>
-        </article>
-        <article>
-          <img src="images/GitHop.png" alt="GitHop beer glass" />
-          <h2>GitHop</h2>
-          <p>80 kr</p>
-          <button>About</button>
-        </article>
-        <article>
-          <img src="images/Hollaback-Lager.png" alt="Hollaback Lager beer glass" />
-          <h2>Hollaback Lager</h2>
-          <p>80 kr</p>
-          <button>About</button>
-        </article>
-      </section> */}
     </div>
   );
 }

@@ -1,12 +1,7 @@
 import Product from "./Product";
 
 export default function ProductList(props) {
-  return (
-    <section className="ProductList">
-      <Product {...props.product} />
-      <Product {...props.product} />
-      <Product {...props.product} />
-      <Product {...props.product} />
-    </section>
-  );
+  // Creating an array with Product components based on data in props
+  const list = props.products.map((product) => <Product key={product.id} {...product} />);
+  return <section className="ProductList">{list}</section>;
 }
