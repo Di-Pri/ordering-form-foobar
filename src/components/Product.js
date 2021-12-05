@@ -15,6 +15,14 @@ export default function Product(props) {
       }
       return oldAmount + 1;
     });
+    // adding products to basket (to total price)
+    if (amount < 99) {
+      props.addToTotalPrice({
+        price: 80,
+        name: props.name,
+        id: props.id,
+      });
+    }
   }
 
   // Decrementing the number of beers selected

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ProductList from "./ProductList";
 import TotalPrice from "./TotalPrice";
 
@@ -29,11 +30,21 @@ function Main() {
       label: "hoppilyeverafter.png",
     },
   ];
+
+  const [totalPrice, setTotalPrice] = useState([]);
+
+  function addToTotalPrice(product) {
+    setTotalPrice((oldTotalPrice) => {
+      const newTotalPrice = oldTotalPrice.concat(product);
+      return newTotalPrice;
+    });
+  }
+
   return (
     <div className="Main">
       <img className="mainLogo" src="icons/foobar-logo.svg" alt="Foobar logo" />
-      <ProductList products={products} />
-      <TotalPrice />
+      <ProductList products={products} addToTotalPrice={addToTotalPrice} />
+      <TotalPrice totalPrice={totalPrice} />
     </div>
   );
 }
