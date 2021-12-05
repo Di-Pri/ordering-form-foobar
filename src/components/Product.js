@@ -33,7 +33,7 @@ export default function Product(props) {
         <img src={beerImage} alt={beerImageAlt} />
         <h2>{props.name}</h2>
         <h3>80 kr</h3>
-        <button>About</button>
+        <button className="about">About</button>
       </section>
       <section className="plusMinus">
         <button onClick={plus}></button>

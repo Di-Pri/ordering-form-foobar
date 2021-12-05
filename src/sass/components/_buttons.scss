@@ -1,6 +1,6 @@
 @use "../base" as b;
 
-// Styling plus and minus buttons
+// Styling Plus and Minus buttons
 
 .plusMinus button {
   display: flex;
@@ -30,4 +30,18 @@
 .plusMinus button:nth-of-type(1)::after {
   @include minus;
   transform: rotate(90deg);
+}
+
+// Styling About button
+
+.about {
+  border: none;
+  background: none;
+  color: b.$main-font-color;
+  font-size: 22px;
+  margin-top: 0.4rem;
+  text-decoration: underline;
+  text-underline-position: under;
+  text-decoration-thickness: from-font;
+  letter-spacing: 0.3px;
 }
