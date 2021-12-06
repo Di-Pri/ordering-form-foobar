@@ -11,6 +11,7 @@ function Main() {
     async function fetchData() {
       const res = await fetch("https://winter-foobar.herokuapp.com/");
       const data = await res.json();
+      checkTaps(data);
       console.log(data);
     }
     async function fetchBeerTypes() {
@@ -21,6 +22,17 @@ function Main() {
     fetchData();
     fetchBeerTypes();
   }, []);
+
+  // Checking beers in taps and updating displayed products to those that are currently available
+  function checkTaps(data) {
+    setProducts((oldProducts) => {
+      const beersOnTap = data.taps.map((tap) => tap.beer);
+      console.log("beersOnTap:", beersOnTap);
+      const newProducts = oldProducts.filter((beer) => beersOnTap.includes(beer.name));
+      console.log("newProducts:", newProducts);
+      return newProducts;
+    });
+  }
 
   function addToTotalPrice(product) {
     setTotalPrice((oldTotalPrice) => {
