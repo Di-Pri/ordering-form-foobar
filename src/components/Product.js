@@ -15,7 +15,7 @@ export default function Product(props) {
       }
       return oldAmount + 1;
     });
-    // adding products to basket (to total price)
+    // Adding products to basket (to total price)
     if (amount < 99) {
       props.addToTotalPrice({
         price: 80,

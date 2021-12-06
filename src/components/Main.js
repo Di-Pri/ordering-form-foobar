@@ -1,37 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductList from "./ProductList";
 import TotalPrice from "./TotalPrice";
 
 function Main() {
-  const products = [
-    {
-      id: 0,
-      name: "El Hefe",
-      label: "elhefe.png",
-    },
-    {
-      id: 1,
-      name: "Fairy Tale Ale",
-      label: "fairytaleale.png",
-    },
-    {
-      id: 2,
-      name: "GitHop",
-      label: "githop.png",
-    },
-    {
-      id: 3,
-      name: "Hollaback Lager",
-      label: "hollaback.png",
-    },
-    {
-      id: 4,
-      name: "Hoppily Ever After",
-      label: "hoppilyeverafter.png",
-    },
-  ];
-
+  const [products, setProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState([]);
+
+  // Fetching data
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch("https://winter-foobar.herokuapp.com/");
+      const data = await res.json();
+      console.log(data);
+    }
+    async function fetchBeerTypes() {
+      const res = await fetch("https://winter-foobar.herokuapp.com/beertypes");
+      const data = await res.json();
+      setProducts(data);
+    }
+    fetchData();
+    fetchBeerTypes();
+  }, []);
 
   function addToTotalPrice(product) {
     setTotalPrice((oldTotalPrice) => {
