@@ -18,8 +18,8 @@ function Main() {
       const res = await fetch("https://winter-foobar.herokuapp.com/beertypes");
       const data = await res.json();
       setProducts(data);
+      fetchData();
     }
-    fetchData();
     fetchBeerTypes();
   }, []);
 

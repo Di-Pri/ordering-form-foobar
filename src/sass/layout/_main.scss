@@ -1,49 +1,50 @@
 @use "../base" as b;
+$font-weight: 400;
 
 .Main {
   background-color: b.$bg-color;
   color: b.$main-font-color;
   text-align: center;
+  font-weight: 400;
 }
 
 .ProductList {
   display: grid;
-  // grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  grid-template-columns: repeat(3, 220px);
+  grid-template-columns: repeat(3, 290px);
   justify-content: space-evenly;
-  gap: 5rem;
-  margin-top: 3rem;
-  margin-inline: 2rem;
+  gap: 5rem 1vw;
+  margin: 3rem 2rem;
 }
 
 .Product {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
   h2 {
-    font-size: 35px;
-    font-weight: 400;
+    font-size: 30px;
+    font-weight: $font-weight;
     margin-top: 1rem;
   }
   h3 {
-    font-size: 24px;
-    font-weight: 400;
+    font-size: 22px;
+    font-weight: $font-weight;
     text-transform: uppercase;
   }
   img {
-    // max-width: 100%;
     width: 160px;
     height: auto;
   }
+  section:nth-of-type(1) {
+    width: 250px;
+  }
   .plusMinus {
-    margin-top: -6rem;
+    margin-top: 4rem;
+    margin-left: -30px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     width: 70px;
     p {
-      font-size: 55px;
+      font-size: 50px;
       padding-top: 1.3rem;
       padding-bottom: 1.3rem;
       font-weight: 700;
@@ -51,14 +52,21 @@
   }
 }
 
-@media screen and (max-width: 930px) {
+.totalPrice {
+  font-size: 40px;
+  text-transform: uppercase;
+  margin-top: 5rem;
+  font-weight: $font-weight;
+}
+
+@media screen and (max-width: 950px) {
   .ProductList {
-    grid-template-columns: repeat(2, 220px);
+    grid-template-columns: repeat(2, 290px);
   }
 }
 
 @media screen and (max-width: 700px) {
   .ProductList {
-    grid-template-columns: 220px;
+    grid-template-columns: 290px;
   }
 }
