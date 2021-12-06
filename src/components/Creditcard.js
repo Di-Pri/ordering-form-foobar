@@ -45,7 +45,6 @@ function Creditcard() {
 
   useEffect(() => {
     if (cvc.length === 3) {
-      // cardCvcRef.current.blur();
       document.activeElement.blur();
     }
   }, [cvc]);
@@ -81,7 +80,7 @@ function Creditcard() {
   };
 
   const handleNameBlur = (e) => {
-    if (e.target.value.length < 2) {
+    if (e.target.value.length < 3) {
       setNameErr(true);
     } else {
       setNameErr(false);
@@ -180,8 +179,10 @@ function Creditcard() {
         <h1>payment</h1>
         <form>
           <div className="line line_one">
-            <label htmlFor="card-number" ref={cardNumberRef}>
-              <span className="label">Card number</span>
+            <label htmlFor="card-number" ref={cardNumberRef} className="label">
+              Card number
+            </label>
+            <div className="input_wrapper">
               <MaskedInput
                 mask={[
                   /[1-9]/,
@@ -216,8 +217,7 @@ function Creditcard() {
                 onBlur={handleNumberBlur}
               />
               <SuccessMessage show={number.length === 19} />
-            </label>
-
+            </div>
             <ErrorMessage
               text={"Credit card number must be 16 digits"}
               show={numberErr}
@@ -225,8 +225,10 @@ function Creditcard() {
           </div>
 
           <div className="line line_two">
-            <label htmlFor="card-name">
-              <span className="label">Name on card</span>
+            <label htmlFor="card-name" className="label">
+              Name on card
+            </label>
+            <div className="input_wrapper">
               <input
                 type="text"
                 name="name"
@@ -238,14 +240,20 @@ function Creditcard() {
                 onBlur={handleNameBlur}
               />
               <SuccessMessage show={name.length > 2} />
-            </label>
+            </div>
             <ErrorMessage text={"Please enter your name"} show={nameErr} />
           </div>
 
           <div className="line line_three">
             <div className="column_one">
-              <label htmlFor="card-expiry" ref={cardExpiryRef}>
-                <span className="label">Expiry date</span>
+              <label
+                htmlFor="card-expiry"
+                className="label"
+                ref={cardExpiryRef}
+              >
+                Expiry date
+              </label>
+              <div className="input_wrapper">
                 <MaskedInput
                   mask={[/[0-9]/, /\d/, "/", /\d/, /\d/]}
                   className="form-control"
@@ -259,7 +267,7 @@ function Creditcard() {
                   onBlur={handleExpiryBlur}
                 />
                 <SuccessMessage show={expiry.length === 5} />
-              </label>
+              </div>
               <ErrorMessage
                 text={"Expiry date must be 4 digits"}
                 show={expiryErr}
@@ -267,8 +275,10 @@ function Creditcard() {
             </div>
 
             <div className="column_two">
-              <label htmlFor="card-cvc" ref={cardCvcRef}>
-                <span className="label">Security code</span>
+              <label htmlFor="card-cvc" className="label" ref={cardCvcRef}>
+                Security code
+              </label>
+              <div className="input_wrapper">
                 <MaskedInput
                   mask={[/[0-9]/, /\d/, /\d/, /\d/]}
                   className="form-control"
@@ -282,7 +292,7 @@ function Creditcard() {
                   onBlur={handleCvcBlur}
                 />
                 <SuccessMessage show={cvc.length === 3} />
-              </label>
+              </div>
               <ErrorMessage
                 text={"Security code must be 3 digits"}
                 show={cvcErr}

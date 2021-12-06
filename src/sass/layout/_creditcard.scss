@@ -22,13 +22,20 @@
   .line {
     margin-bottom: calc(0.8rem + 0.3vw + 0.5vh);
 
+    .input_wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+      margin: 0.5rem 0 0.2rem 0;
+    }
+
     input {
       background-color: b.$buttons-bg;
       // color: #9da6c1;
       color: #cdd5ea;
       font-weight: 200;
       border: none;
-      margin: 0.5rem 0 0.2rem 0;
+
       font-size: b.$creditcard-bodytext-size;
       border-radius: 5px;
       padding: 0.6rem;
@@ -50,6 +57,7 @@
     .success {
       color: b.$success-color;
       padding: 0.6rem;
+      margin-top: auto;
       display: inline-flex;
       justify-content: center;
       align-items: baseline;
