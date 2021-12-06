@@ -6,7 +6,7 @@ export default function TotalPrice(props) {
   }, initialValue);
 
   return (
-    <h3 className="totalPrice">
+    <h3 className="TotalPrice">
       Total: <span>{sum}</span> kr
     </h3>
   );

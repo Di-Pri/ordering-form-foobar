@@ -52,16 +52,49 @@ $font-weight: 400;
   }
 }
 
-.totalPrice {
-  font-size: 40px;
+.TotalPrice {
+  font-size: 50px;
   text-transform: uppercase;
-  margin-top: 5rem;
+  margin-top: 6rem;
   font-weight: $font-weight;
+}
+
+.PaymentMethod {
+  p {
+    font-size: 25px;
+    margin: 3rem;
+    font-weight: $font-weight;
+  }
+  section {
+    display: flex;
+    justify-content: space-evenly;
+    div {
+      img {
+        max-width: 80%;
+      }
+      display: flex;
+      justify-content: center;
+      box-shadow: 0px 0px 4px 2px #000;
+      border-radius: 20px;
+      background-color: b.$buttons-bg;
+      width: 350px;
+      height: 180px;
+    }
+  }
 }
 
 @media screen and (max-width: 950px) {
   .ProductList {
     grid-template-columns: repeat(2, 290px);
+  }
+
+  .PaymentMethod {
+    section {
+      div {
+        width: 36vw;
+        height: 19vw;
+      }
+    }
   }
 }
 

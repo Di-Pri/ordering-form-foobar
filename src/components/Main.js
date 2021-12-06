@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ProductList from "./ProductList";
 import TotalPrice from "./TotalPrice";
+import PaymentMethod from "./PaymentMethod";
 
 function Main() {
   const [products, setProducts] = useState([]);
@@ -46,6 +47,7 @@ function Main() {
       <img className="mainLogo" src="icons/foobar-logo.svg" alt="Foobar logo" />
       <ProductList products={products} addToTotalPrice={addToTotalPrice} />
       <TotalPrice totalPrice={totalPrice} />
+      <PaymentMethod />
     </div>
   );
 }
