@@ -5,38 +5,13 @@ body {
   color: b.$main-font-color;
 }
 
-.mobilepay_wrapper {
+.Mobilepay {
   max-width: 600px;
-  width: 60%;
+  width: 80%;
   margin: auto;
 }
 
-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  img {
-    max-width: 400px;
-    width: 80%;
-  }
-}
-
-main.mobilepay {
-  .backlink_wrapper {
-    margin: calc(2rem + 1vw) 0;
-
-    .backlink {
-      font-size: b.$backlink-font-size;
-      cursor: pointer;
-
-      img {
-        max-width: 0.7rem;
-        margin-right: 0.4rem;
-      }
-    }
-  }
-
+.Mobilepay > main {
   h1 {
     font-size: b.$heading-font-size;
     font-weight: 400;

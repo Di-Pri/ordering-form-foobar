@@ -4,9 +4,9 @@ import Backlink from "./Backlink";
 
 function Mobilepay() {
   return (
-    <section className="mobilepay_wrapper">
+    <section className="Mobilepay">
       <Header />
-      <main className="mobilepay">
+      <main>
         <Backlink />
         <h1>payment</h1>
         <div className="picture">
