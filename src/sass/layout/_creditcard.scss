@@ -45,9 +45,13 @@
       color: b.$form-font-color;
     }
 
-    // input:focus {
-    //   outline: 1px solid red;
-    // }
+    input:focus {
+      outline: 1px solid #fff;
+    }
+
+    input.incomplete:focus {
+      outline: 1px solid b.$error-color;
+    }
 
     .label {
       display: block;
@@ -89,7 +93,7 @@
 
   .line_one input,
   .line_two input {
-    width: 90%;
+    width: 95%;
   }
 
   .line_three {

@@ -29,7 +29,6 @@ function Creditcard() {
   const cardCvcRef = useRef("");
   const cardNameRef = useRef("");
   const submitButton = useRef("");
-  const numberErrRef = useRef("");
 
   useEffect(() => {
     if (number.length === 19) {
@@ -51,7 +50,6 @@ function Creditcard() {
 
   const handleNumberInput = (e) => {
     setNumber(e.target.value);
-    // const cardnumberWithoutSpaces = e.target.value.replace(/[^\d]/g, "");
   };
 
   const handleNumberBlur = (e) => {
@@ -206,7 +204,7 @@ function Creditcard() {
                   /\d/,
                 ]}
                 autoFocus
-                className="form-control"
+                className={`form-control ${numberErr ? "incomplete" : ""}`}
                 placeholder="1234 5678 9012 3456"
                 guide={false}
                 value={number}
@@ -232,6 +230,7 @@ function Creditcard() {
               <input
                 type="text"
                 name="name"
+                className={`${nameErr ? "incomplete" : ""}`}
                 id="card-name"
                 placeholder="John Doe"
                 ref={cardNameRef}
@@ -256,7 +255,7 @@ function Creditcard() {
               <div className="input_wrapper">
                 <MaskedInput
                   mask={[/[0-9]/, /\d/, "/", /\d/, /\d/]}
-                  className="form-control"
+                  className={`form-control ${expiryErr ? "incomplete" : ""}`}
                   placeholder="04/23"
                   guide={false}
                   value={expiry}
@@ -281,7 +280,7 @@ function Creditcard() {
               <div className="input_wrapper">
                 <MaskedInput
                   mask={[/[0-9]/, /\d/, /\d/, /\d/]}
-                  className="form-control"
+                  className={`form-control ${cvcErr ? "incomplete" : ""}`}
                   placeholder="123"
                   guide={false}
                   value={cvc}
