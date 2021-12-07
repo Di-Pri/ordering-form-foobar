@@ -3,6 +3,7 @@ import Header from "./Header";
 import Backlink from "./Backlink";
 import MaskedInput from "react-text-mask";
 import { useState, useRef, useEffect } from "react";
+import { postOrder } from "./../utilities/post.js";
 
 function Creditcard() {
   // to be deleted
@@ -10,7 +11,7 @@ function Creditcard() {
     "order",
     JSON.stringify([
       { name: "Hoppily Ever After", amount: 1 },
-      { name: "Row 26", amount: 2 },
+      { name: "El Hefe", amount: 2 },
     ])
   );
   // to be deleted end
@@ -32,19 +33,58 @@ function Creditcard() {
 
   useEffect(() => {
     if (number.length === 19) {
-      cardNameRef.current.focus();
+      if (numberErr) {
+        if (nameErr) {
+          cardNameRef.current.focus();
+        } else if (expiryErr) {
+          cardExpiryRef.current.focus();
+        } else if (cvcErr) {
+          cardCvcRef.current.focus();
+        } else if (!cvcErr && !expiryErr && !nameErr) {
+          document.activeElement.blur();
+        }
+        setNumberErr(false);
+      } else {
+        cardNameRef.current.focus();
+      }
     }
   }, [number]);
 
   useEffect(() => {
     if (expiry.length === 5) {
-      cardCvcRef.current.focus();
+      if (expiryErr) {
+        if (cvcErr) {
+          cardCvcRef.current.focus();
+        } else if (numberErr) {
+          cardNumberRef.current.focus();
+        } else if (nameErr) {
+          cardNameRef.current.focus();
+        } else if (!cvcErr && !numberErr && !nameErr) {
+          document.activeElement.blur();
+        }
+        setExpiryErr(false);
+      } else {
+        cardCvcRef.current.focus();
+      }
     }
   }, [expiry]);
 
   useEffect(() => {
     if (cvc.length === 3) {
-      document.activeElement.blur();
+      if (cvcErr) {
+        if (numberErr) {
+          cardNumberRef.current.focus();
+        } else if (nameErr) {
+          cardNameRef.current.focus();
+        } else if (expiryErr) {
+          cardExpiryRef.current.focus();
+        } else if (!expiryErr && !numberErr && !nameErr) {
+          document.activeElement.blur();
+        }
+        setExpiryErr(false);
+      } else {
+        document.activeElement.blur();
+      }
     }
   }, [cvc]);
 
@@ -53,7 +93,6 @@ function Creditcard() {
   };
 
   const handleNumberBlur = (e) => {
-    console.log(e.target.value);
     if (e.target.value.length < 19) {
       setNumberErr(true);
     } else {
@@ -113,41 +152,13 @@ function Creditcard() {
     errorField.current.focus();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errorField = checkForErrors();
     if (!errorField) {
-      try {
-        postOrder();
-      } catch (err) {
-        console.log("Caught error " + err);
-      }
+      await postOrder();
     } else {
       focusOnError(errorField);
-    }
-  };
-
-  const postOrder = async () => {
-    console.log("postOrder");
-    const order = localStorage.getItem("order");
-    console.log(order);
-
-    const endpoint = "https://foobar-ddo.herokuapp.com/order/";
-
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-      },
-      body: order,
-    };
-
-    try {
-      const request = await fetch(endpoint, options);
-      const data = await request.json();
-      console.log(data);
-    } catch (err) {
-      console.log("Caught error " + err);
     }
   };
 
@@ -164,7 +175,7 @@ function Creditcard() {
   function SuccessMessage(props) {
     return (
       <div className={`success ${props.show ? "shown" : ""}`}>
-        <img src="icons/checkmark.svg" />
+        <img src="icons/checkmark.svg" alt="success icon" />
       </div>
     );
   }
@@ -177,7 +188,11 @@ function Creditcard() {
         <h1>payment</h1>
         <form>
           <div className="line line_one">
-            <label htmlFor="card-number" ref={cardNumberRef} className="label">
+            <label
+              htmlFor="card-number"
+              ref={cardNumberRef}
+              className="label number"
+            >
               Card number
             </label>
             <div className="input_wrapper">
@@ -223,7 +238,7 @@ function Creditcard() {
           </div>
 
           <div className="line line_two">
-            <label htmlFor="card-name" className="label">
+            <label htmlFor="card-name" className="label name">
               Name on card
             </label>
             <div className="input_wrapper">
@@ -247,7 +262,7 @@ function Creditcard() {
             <div className="column_one">
               <label
                 htmlFor="card-expiry"
-                className="label"
+                className="label expiry"
                 ref={cardExpiryRef}
               >
                 Expiry date
@@ -274,7 +289,7 @@ function Creditcard() {
             </div>
 
             <div className="column_two">
-              <label htmlFor="card-cvc" className="label" ref={cardCvcRef}>
+              <label htmlFor="card-cvc" className="label cvc" ref={cardCvcRef}>
                 Security code
               </label>
               <div className="input_wrapper">

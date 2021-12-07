@@ -4,7 +4,7 @@ function Backlink() {
   return (
     <div className="Backlink">
       <a className="link">
-        <img src="icons/arrow-back.svg" />
+        <img src="icons/arrow-back.svg" alt="chevron left" />
         Back to the menu
       </a>
     </div>

@@ -2,6 +2,12 @@ import "../sass/layout/_confirmation.scss";
 import Header from "./Header";
 
 function Confirmation() {
+  const response = JSON.parse(localStorage.getItem("response"));
+  const order = JSON.parse(localStorage.getItem("order"));
+  const beerItems = order.map((beer) => {
+    return <span>{`${beer.amount}x   ${beer.name}`}</span>;
+  });
+
   return (
     <section className="Confirmation">
       <Header />
@@ -15,16 +21,12 @@ function Confirmation() {
         </div>
         <article id="order">
           <div className="wrapper">
-            <h2>order #123</h2>
-            <div className="beers">
-              <span>El Hefe</span>
-              <span>Sleighride</span>
-              <span>Ruined childhood</span>
-            </div>
+            <h2>{`order #${response.id}`}</h2>
+            <div className="beers">{beerItems}</div>
           </div>
         </article>
         <div className="picture">
-          <img src="images/thankyou-drawing.svg" />
+          <img src="images/thankyou-drawing.svg" alt="thank you drawing" />
         </div>
       </main>
     </section>

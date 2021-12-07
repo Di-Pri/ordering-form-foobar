@@ -3,7 +3,7 @@ import "../sass/layout/_header.scss";
 function Header() {
   return (
     <header className="Header">
-      <img src="icons/foobar-logo.svg" />
+      <img src="icons/foobar-logo.svg" alt="logo" />
     </header>
   );
 }
