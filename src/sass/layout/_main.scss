@@ -8,6 +8,7 @@ $font-weight: 400;
   font-weight: 400;
 }
 
+// Product list
 .ProductList {
   display: grid;
   grid-template-columns: repeat(3, 290px);
@@ -16,9 +17,9 @@ $font-weight: 400;
   margin: 3rem 2rem;
 }
 
+// Product
 .Product {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   h2 {
     font-size: 30px;
     font-weight: $font-weight;
@@ -52,6 +53,7 @@ $font-weight: 400;
   }
 }
 
+// Total price
 .TotalPrice {
   font-size: 50px;
   text-transform: uppercase;
@@ -59,15 +61,19 @@ $font-weight: 400;
   font-weight: $font-weight;
 }
 
+// Payment method
 .PaymentMethod {
+  padding-bottom: 5rem;
   p {
     font-size: 25px;
-    margin: 3rem;
+    margin: 3rem 1rem;
     font-weight: $font-weight;
   }
   section {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 8vw;
+    margin-inline: 1rem;
     div {
       img {
         max-width: 80%;
@@ -87,12 +93,23 @@ $font-weight: 400;
   .ProductList {
     grid-template-columns: repeat(2, 290px);
   }
+}
+
+@media screen and (max-width: 850px) {
+  .TotalPrice {
+    font-size: calc(20px + 3.55vw);
+  }
 
   .PaymentMethod {
+    p {
+      font-size: calc(15px + 1.2vw);
+    }
     section {
+      gap: calc(10vw - 17px);
       div {
-        width: 36vw;
-        height: 19vw;
+        width: 41vw;
+        height: calc(4vh + 17.5vw);
+        border-radius: 2.5vw;
       }
     }
   }
@@ -101,5 +118,28 @@ $font-weight: 400;
 @media screen and (max-width: 700px) {
   .ProductList {
     grid-template-columns: 290px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .Product {
+    h2 {
+      font-size: calc(20px + 2vw);
+    }
+    h3 {
+      font-size: calc(17px + 1vw);
+    }
+    img {
+      width: calc(30px + 26vw);
+    }
+    .plusMinus {
+      margin-top: calc(15vw - 10px);
+      margin-left: calc(14vw - 100px);
+      p {
+        font-size: calc(20px + 6vw);
+        padding-top: 4vw;
+        padding-bottom: 4vw;
+      }
+    }
   }
 }

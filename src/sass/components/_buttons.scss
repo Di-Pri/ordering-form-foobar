@@ -45,3 +45,30 @@
   text-decoration-thickness: from-font;
   letter-spacing: 0.3px;
 }
+
+// Styling Pay button
+
+.pay {
+  border: none;
+  box-shadow: 0px 0px 4px 2px #000;
+  border-radius: 10px;
+  background-color: b.$buttons-bg;
+  color: b.$main-font-color;
+  width: 300px;
+  height: 75px;
+  margin-top: 8rem;
+  text-transform: uppercase;
+  font-size: 40px;
+  font-weight: 700;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 400px) {
+  .pay {
+    width: 75vw;
+    height: calc(2.2rem + 10vw);
+    font-size: calc(16px + 6vw);
+    margin-top: 32vw;
+  }
+}
