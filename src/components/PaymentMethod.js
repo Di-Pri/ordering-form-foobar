@@ -9,6 +9,7 @@ export default function PaymentMethod() {
   function chosenMethod(method) {
     console.log("Chosen payment method is:", method);
     setChosen(method);
+    setErrorMessage("");
     if (method === "creditCard") {
       setCreditCardClass("methods chosenMethod");
       setMobilePayClass("methods");

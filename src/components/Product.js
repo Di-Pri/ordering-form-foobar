@@ -1,7 +1,12 @@
 import { useState } from "react";
+import Popup from "./Popup";
 
 export default function Product(props) {
   const [amount, setAmount] = useState(0);
+  const [popupOpen, setPopupOpen] = useState(false);
+  const togglePopup = () => {
+    setPopupOpen(!popupOpen);
+  };
 
   // Setting path to images with the glasses
   const beerImage = `images/${props.label}`;
@@ -41,7 +46,19 @@ export default function Product(props) {
         <img src={beerImage} alt={beerImageAlt} />
         <h2>{props.name}</h2>
         <h3>80 kr</h3>
-        <button className="about">About</button>
+        <button className="about" onClick={togglePopup}>
+          About
+        </button>
+        {popupOpen && (
+          <Popup
+            togglePopup={togglePopup}
+            name={props.name}
+            desc={props.description.overallImpression}
+            alcohol={props.alc}
+            category={props.category}
+            label={props.label}
+          />
+        )}
       </section>
       <section className="plusMinus">
         <button onClick={plus}></button>

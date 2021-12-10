@@ -32,6 +32,39 @@
   transform: rotate(90deg);
 }
 
+// Styling Close modal button
+
+.closeModal button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  background-color: b.$plus-minus-bg;
+  box-shadow: 0px 0px 3px 1px #000;
+  transform: rotate(45deg);
+}
+
+@mixin minus {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 5px;
+  background-color: b.$plus-minus-color;
+  border-radius: 5px;
+}
+
+.closeModal button::before {
+  @include minus;
+}
+
+.closeModal button::after {
+  @include minus;
+  transform: rotate(90deg);
+}
+
 // Styling About button
 
 .about {
