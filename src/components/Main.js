@@ -13,7 +13,6 @@ function Main() {
       const res = await fetch("https://winter-foobar.herokuapp.com/");
       const data = await res.json();
       checkTaps(data);
-      console.log(data);
     }
     async function fetchBeerTypes() {
       const res = await fetch("https://winter-foobar.herokuapp.com/beertypes");
