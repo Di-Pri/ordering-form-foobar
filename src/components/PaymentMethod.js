@@ -4,6 +4,7 @@ export default function PaymentMethod() {
   const [chosen, setChosen] = useState("");
   const [creditCardClass, setCreditCardClass] = useState("methods");
   const [mobilePayClass, setMobilePayClass] = useState("methods");
+  const [errorMessage, setErrorMessage] = useState("");
 
   function chosenMethod(method) {
     console.log("Chosen payment method is:", method);
@@ -18,6 +19,12 @@ export default function PaymentMethod() {
     }
   }
 
+  function pay() {
+    if (chosen === "") {
+      setErrorMessage("You need to choose a payment method");
+    }
+  }
+
   return (
     <article className="PaymentMethod">
       <p>Please choose a payment method</p>
@@ -29,8 +36,10 @@ export default function PaymentMethod() {
           <img src="icons/mobilepay-logo.svg" alt="Mobile pay icon" />
         </button>
       </section>
-      <p>{chosen}</p>
-      <button className="pay">Pay</button>
+      <p>{errorMessage}</p>
+      <button className="pay" onClick={pay}>
+        Pay
+      </button>
     </article>
   );
 }
