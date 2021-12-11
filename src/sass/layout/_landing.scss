@@ -1,12 +1,11 @@
 @use "../base" as b;
 
-.App {
+.Landing {
   display: flex;
   flex-direction: column;
   color: b.$main-font-color;
   background-color: b.$bg-color;
   width: 100vw;
-  max-width: 100%;
   height: 100vh;
   justify-content: space-between;
   align-items: center;
@@ -14,13 +13,11 @@
   & > img {
     width: 400px;
     height: auto;
-    margin-bottom: 2rem;
   }
   // gradient text for the word "beer"
   span {
     background-color: #fff;
     background-image: linear-gradient(90deg, #fff, b.$bg-color);
-    background-size: 100%;
     background-clip: text;
     -webkit-background-clip: text;
     -moz-background-clip: text;
@@ -45,10 +42,8 @@ h1 {
 }
 
 @media screen and (max-width: 1000px) {
-  .lure {
-    img {
-      height: calc(24vh + 22vw);
-    }
+  .lure img {
+    height: calc(24vh + 22vw);
   }
 
   h1 {
@@ -57,16 +52,12 @@ h1 {
 }
 
 @media screen and (max-width: 600px) {
-  .App {
-    & > img {
-      width: 65vw;
-    }
+  .Landing > img {
+    width: 66.5vw;
   }
 
-  .lure {
-    img {
-      height: calc(27vh + 17vw);
-    }
+  .lure img {
+    height: calc(27vh + 18vw);
   }
 
   h1 {

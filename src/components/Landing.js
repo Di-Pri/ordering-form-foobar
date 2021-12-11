@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-export default function App() {
+export default function Landing() {
   return (
-    <div className="App">
+    <div className="Landing">
       <img src="icons/foobar-logo.svg" alt="Foobar logo" />
       <div className="lure">
         <h1>
