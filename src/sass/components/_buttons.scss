@@ -14,3 +14,11 @@
   text-decoration: none;
   color: b.$bg-color;
 }
+
+@media screen and (max-width: 370px) {
+  .order-now {
+    width: 81vw;
+    height: calc(2rem + 10vw);
+    font-size: calc(8px + 7vw);
+  }
+}
