@@ -86,3 +86,13 @@ export default function Main() {
     </div>
   );
 }
+
+// to be deleted
+// localStorage.setItem(
+//   "order",
+//   JSON.stringify([
+//     { name: "Mowintime", amount: 1 },
+//     { name: "Row 26", amount: 2 },
+//   ])
+// );
+// to be deleted end
