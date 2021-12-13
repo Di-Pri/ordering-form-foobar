@@ -29,7 +29,9 @@ function Main() {
     setProducts((oldProducts) => {
       const beersOnTap = data.taps.map((tap) => tap.beer);
       console.log("beersOnTap:", beersOnTap);
-      const newProducts = oldProducts.filter((beer) => beersOnTap.includes(beer.name));
+      const newProducts = oldProducts.filter((beer) =>
+        beersOnTap.includes(beer.name)
+      );
       console.log("newProducts:", newProducts);
       return newProducts;
     });
@@ -65,21 +67,21 @@ function Main() {
   // }
 
   function removeFromBasket(productToRemove) {
-    // setCartItems(cartItems.find((item) => item.name === productToRemove.name));
+    const indexOfFirstUnwantedItem = cartItems.findIndex(
+      (item) => item.name === productToRemove.name
+    );
+    console.log("unwatned inx", indexOfFirstUnwantedItem);
+    if (indexOfFirstUnwantedItem !== -1) {
+      const firstPart = cartItems.slice(0, indexOfFirstUnwantedItem);
+      const lastPart = cartItems.slice(
+        indexOfFirstUnwantedItem + 1,
+        cartItems.length
+      );
 
-    const aaaa = cartItems.findIndex((item) => item.name === productToRemove.name);
+      //create an array one before the item you want to remove, and one after the item you want to remove, so the new list doesn't include the item you want t oremove
 
-    // const A = [1, 4, 3, 2]
-    // const B = [0, 2, 1, 2]
-    // console.log(cartItems.filter((n) => !aaaa.includes(n)));
-
-    setCartItems(cartItems.filter((item) => item.name === productToRemove.name));
-
-    cartItems.splice(aaaa, 1);
-
-    //  console.log("productToRemove", productToRemove.name);
-    //  console.log("aaaa", aaaa);
-    console.log(cartItems);
+      setCartItems([...firstPart, ...lastPart]);
+    }
   }
 
   console.log("cartItems", cartItems);
