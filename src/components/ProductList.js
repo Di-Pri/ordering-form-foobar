@@ -1,17 +1,16 @@
 import Product from "./Product";
 
 export default function ProductList(props) {
-  // Creating an array with Product components based on data in props
-  const list = props.products.map((product) => (
+  // Creating an array with Product components
+  const listOfBeers = props.products.map((product) => (
     <Product
-      addToTotalPrice={props.addToTotalPrice}
-      removeFromTotalPrice={props.removeFromTotalPrice}
-      addToBasket={props.addToBasket}
-      removeFromBasket={props.removeFromBasket}
-      // id={Math.floor(Math.random() * 100)}
+      addBeersToTotalPrice={props.addBeersToTotalPrice}
+      removeBeersFromTotalPrice={props.removeBeersFromTotalPrice}
+      addToCart={props.addToCart}
+      removeFromCart={props.removeFromCart}
       key={product.name}
       {...product}
     />
   ));
-  return <section className="ProductList">{list}</section>;
+  return <section className="ProductList">{listOfBeers}</section>;
 }

@@ -1,6 +1,4 @@
 export default function Popup(props) {
-  const beerImage = `images/${props.label}`;
-  const beerImageAlt = `Glass with ${props.name} label`;
   return (
     <article className="Popup">
       <div className="closeModal">
@@ -13,10 +11,10 @@ export default function Popup(props) {
             <p>Category: {props.category}</p>
             <p>Alcohol: {props.alcohol}%</p>
           </div>
-          <p>{props.desc}</p>
+          <p>{props.description}</p>
         </section>
         <section>
-          <img src={beerImage} alt={beerImageAlt} />
+          <img src={props.beerImage} alt={props.beerImageAlt} />
         </section>
       </div>
     </article>

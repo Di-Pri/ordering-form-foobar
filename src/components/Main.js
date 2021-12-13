@@ -3,9 +3,9 @@ import ProductList from "./ProductList";
 import TotalPrice from "./TotalPrice";
 import PaymentMethod from "./PaymentMethod";
 
-function Main() {
+export default function Main() {
   const [products, setProducts] = useState([]);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalPriceBeers, setTotalPriceBeers] = useState(0);
   const [cartItems, setCartItems] = useState([]);
 
   // Fetching data
@@ -28,78 +28,61 @@ function Main() {
   function checkTaps(data) {
     setProducts((oldProducts) => {
       const beersOnTap = data.taps.map((tap) => tap.beer);
-      console.log("beersOnTap:", beersOnTap);
-      const newProducts = oldProducts.filter((beer) =>
-        beersOnTap.includes(beer.name)
-      );
-      console.log("newProducts:", newProducts);
+      console.log("Beers on tap:", beersOnTap);
+      const newProducts = oldProducts.filter((beer) => beersOnTap.includes(beer.name));
+      console.log("Available beers:", newProducts);
       return newProducts;
     });
   }
 
-  // function addToTotalPrice(product) {
-  //   setTotalPrice((oldTotalPrice) => {
-  //     const newTotalPrice = oldTotalPrice.concat(product);
-  //     return newTotalPrice;
-  //   });
-  // }
-  function addToTotalPrice() {
-    setTotalPrice((oldTotalPrice) => {
-      return oldTotalPrice + 1;
+  function addBeersToTotalPrice() {
+    setTotalPriceBeers((oldTotalPriceBeers) => {
+      return oldTotalPriceBeers + 1;
     });
   }
 
-  function removeFromTotalPrice() {
-    setTotalPrice((oldTotalPrice) => {
-      return oldTotalPrice - 1;
+  function removeBeersFromTotalPrice() {
+    setTotalPriceBeers((oldTotalPriceBeers) => {
+      return oldTotalPriceBeers - 1;
     });
   }
 
-  function addToBasket(product) {
+  function addToCart(productToAdd) {
     setCartItems((oldCartItems) => {
-      const newCartItems = oldCartItems.concat(product);
+      const newCartItems = oldCartItems.concat(productToAdd);
       return newCartItems;
     });
   }
 
-  // function addToBasket(product) {
-  //   setCartItems([...cartItems, { ...product }]);
-  // }
+  function removeFromCart(productToRemove) {
+    const indexOfFirstUnwantedItem = cartItems.findIndex((item) => item.name === productToRemove.name);
 
-  function removeFromBasket(productToRemove) {
-    const indexOfFirstUnwantedItem = cartItems.findIndex(
-      (item) => item.name === productToRemove.name
-    );
-    console.log("unwatned inx", indexOfFirstUnwantedItem);
-    if (indexOfFirstUnwantedItem !== -1) {
-      const firstPart = cartItems.slice(0, indexOfFirstUnwantedItem);
-      const lastPart = cartItems.slice(
-        indexOfFirstUnwantedItem + 1,
-        cartItems.length
-      );
+    console.log("Index of first unwanted item:", indexOfFirstUnwantedItem);
 
-      //create an array one before the item you want to remove, and one after the item you want to remove, so the new list doesn't include the item you want t oremove
+    // Creating two arrays: one before the item we want to remove, and one after it
 
-      setCartItems([...firstPart, ...lastPart]);
-    }
+    const firstPart = cartItems.slice(0, indexOfFirstUnwantedItem);
+    const lastPart = cartItems.slice(indexOfFirstUnwantedItem + 1, cartItems.length);
+
+    // Merging two arrays into one, that will not include the unwanted item
+
+    setCartItems([...firstPart, ...lastPart]);
   }
 
-  console.log("cartItems", cartItems);
+  console.log("Items in cart:", cartItems);
 
   return (
     <div className="Main">
       <img className="mainLogo" src="icons/foobar-logo.svg" alt="Foobar logo" />
       <ProductList
         products={products}
-        addToTotalPrice={addToTotalPrice}
-        removeFromTotalPrice={removeFromTotalPrice}
-        addToBasket={addToBasket}
-        removeFromBasket={removeFromBasket}
+        addBeersToTotalPrice={addBeersToTotalPrice}
+        removeBeersFromTotalPrice={removeBeersFromTotalPrice}
+        addToCart={addToCart}
+        removeFromCart={removeFromCart}
       />
-      <TotalPrice totalPrice={totalPrice} />
+      <TotalPrice totalPriceBeers={totalPriceBeers} />
       <PaymentMethod />
     </div>
   );
 }
-
-export default Main;

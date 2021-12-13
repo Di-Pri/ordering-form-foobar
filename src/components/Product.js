@@ -4,38 +4,30 @@ import Popup from "./Popup";
 export default function Product(props) {
   const [amount, setAmount] = useState(0);
   const [popupOpen, setPopupOpen] = useState(false);
+
+  // Toggling pop up window
   const togglePopup = () => {
     setPopupOpen(!popupOpen);
   };
-
-  // let aaa = 0;
 
   // Setting path to images with the glasses
   const beerImage = `images/${props.label}`;
   const beerImageAlt = `Glass with ${props.name} label`;
 
-  // Incrementing the number of beers selected
   function plus() {
+    // Incrementing the number of beers selected
     setAmount((oldAmount) => {
       if (oldAmount === 99) {
         return 99;
       }
       return oldAmount + 1;
     });
-    // Adding products to basket (to total price)
+    // Adding beers to cart
     if (amount < 99) {
-      // props.addToTotalPrice({
-      //   price: 80,
-      // });
-
-      props.addToTotalPrice();
-
-      props.addToBasket({
+      props.addBeersToTotalPrice();
+      props.addToCart({
         name: props.name,
-        //   id: aaa,
       });
-      //  aaa += 1;
-      //  console.log("aaa", aaa);
     }
   }
 
@@ -47,15 +39,13 @@ export default function Product(props) {
       }
       return 0;
     });
-
+    // Removing beers from cart
     if (amount > 0) {
-      props.removeFromTotalPrice();
+      props.removeBeersFromTotalPrice();
+      props.removeFromCart({
+        name: props.name,
+      });
     }
-
-    props.removeFromBasket({
-      name: props.name,
-      // id: props.id,
-    });
   }
 
   return (
@@ -71,10 +61,12 @@ export default function Product(props) {
           <Popup
             togglePopup={togglePopup}
             name={props.name}
-            desc={props.description.overallImpression}
+            description={props.description.overallImpression}
             alcohol={props.alc}
             category={props.category}
             label={props.label}
+            beerImage={beerImage}
+            beerImageAlt={beerImageAlt}
           />
         )}
       </section>

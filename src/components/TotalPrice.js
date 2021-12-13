@@ -1,15 +1,7 @@
-export default function TotalPrice(props) {
+export default function TotalPrice({ totalPriceBeers }) {
   // Calculating total price
-  // const initialValue = 0;
-  // let sum = props.totalPrice.reduce(function (previousValue, currentValue) {
-  //   return previousValue + currentValue.price;
-  // }, initialValue);
 
-  let sum = props.totalPrice * 80;
+  const sum = totalPriceBeers * 80;
 
-  return (
-    <h3 className="TotalPrice">
-      Total: <span>{sum}</span> kr
-    </h3>
-  );
+  return <h3 className="TotalPrice">Total: {sum} kr</h3>;
 }
