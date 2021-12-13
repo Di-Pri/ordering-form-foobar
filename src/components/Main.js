@@ -5,7 +5,8 @@ import PaymentMethod from "./PaymentMethod";
 
 function Main() {
   const [products, setProducts] = useState([]);
-  const [totalPrice, setTotalPrice] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [cartItems, setCartItems] = useState([]);
 
   // Fetching data
   useEffect(() => {
@@ -34,17 +35,65 @@ function Main() {
     });
   }
 
-  function addToTotalPrice(product) {
+  // function addToTotalPrice(product) {
+  //   setTotalPrice((oldTotalPrice) => {
+  //     const newTotalPrice = oldTotalPrice.concat(product);
+  //     return newTotalPrice;
+  //   });
+  // }
+  function addToTotalPrice() {
     setTotalPrice((oldTotalPrice) => {
-      const newTotalPrice = oldTotalPrice.concat(product);
-      return newTotalPrice;
+      return oldTotalPrice + 1;
     });
   }
+
+  function removeFromTotalPrice() {
+    setTotalPrice((oldTotalPrice) => {
+      return oldTotalPrice - 1;
+    });
+  }
+
+  function addToBasket(product) {
+    setCartItems((oldCartItems) => {
+      const newCartItems = oldCartItems.concat(product);
+      return newCartItems;
+    });
+  }
+
+  // function addToBasket(product) {
+  //   setCartItems([...cartItems, { ...product }]);
+  // }
+
+  function removeFromBasket(productToRemove) {
+    // setCartItems(cartItems.find((item) => item.name === productToRemove.name));
+
+    const aaaa = cartItems.findIndex((item) => item.name === productToRemove.name);
+
+    // const A = [1, 4, 3, 2]
+    // const B = [0, 2, 1, 2]
+    // console.log(cartItems.filter((n) => !aaaa.includes(n)));
+
+    setCartItems(cartItems.filter((item) => item.name === productToRemove.name));
+
+    cartItems.splice(aaaa, 1);
+
+    //  console.log("productToRemove", productToRemove.name);
+    //  console.log("aaaa", aaaa);
+    console.log(cartItems);
+  }
+
+  console.log("cartItems", cartItems);
 
   return (
     <div className="Main">
       <img className="mainLogo" src="icons/foobar-logo.svg" alt="Foobar logo" />
-      <ProductList products={products} addToTotalPrice={addToTotalPrice} />
+      <ProductList
+        products={products}
+        addToTotalPrice={addToTotalPrice}
+        removeFromTotalPrice={removeFromTotalPrice}
+        addToBasket={addToBasket}
+        removeFromBasket={removeFromBasket}
+      />
       <TotalPrice totalPrice={totalPrice} />
       <PaymentMethod />
     </div>

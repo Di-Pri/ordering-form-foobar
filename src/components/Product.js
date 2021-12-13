@@ -8,6 +8,8 @@ export default function Product(props) {
     setPopupOpen(!popupOpen);
   };
 
+  // let aaa = 0;
+
   // Setting path to images with the glasses
   const beerImage = `images/${props.label}`;
   const beerImageAlt = `Glass with ${props.name} label`;
@@ -22,11 +24,18 @@ export default function Product(props) {
     });
     // Adding products to basket (to total price)
     if (amount < 99) {
-      props.addToTotalPrice({
-        price: 80,
+      // props.addToTotalPrice({
+      //   price: 80,
+      // });
+
+      props.addToTotalPrice();
+
+      props.addToBasket({
         name: props.name,
-        id: props.id,
+        //   id: aaa,
       });
+      //  aaa += 1;
+      //  console.log("aaa", aaa);
     }
   }
 
@@ -37,6 +46,15 @@ export default function Product(props) {
         return oldAmount - 1;
       }
       return 0;
+    });
+
+    if (amount > 0) {
+      props.removeFromTotalPrice();
+    }
+
+    props.removeFromBasket({
+      name: props.name,
+      // id: props.id,
     });
   }
 

@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { Link } from "react-router-dom";
+
 export default function PaymentMethod() {
   const [chosen, setChosen] = useState("");
   const [creditCardClass, setCreditCardClass] = useState("methods");
@@ -38,9 +40,14 @@ export default function PaymentMethod() {
         </button>
       </section>
       <p>{errorMessage}</p>
-      <button className="pay" onClick={pay}>
-        Pay
-      </button>
+
+      <nav>
+        <Link to={chosen}>
+          <button className="pay" onClick={pay}>
+            Pay
+          </button>
+        </Link>
+      </nav>
     </article>
   );
 }
