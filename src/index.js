@@ -16,10 +16,6 @@ ReactDOM.render(
         <Route path="/creditcard" element={<Creditcard />} />
         <Route path="/mobilepay" element={<Mobilepay />} />
         <Route path="/confirmation" element={<Confirmation />} />
-        {/* <App /> */}
-        {/* <Confirmation /> */}
-        {/* <Mobilepay /> */}
-        {/* <Creditcard /> */}
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
