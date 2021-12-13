@@ -4,8 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./style.scss";
 import Landing from "./components/Landing";
 import Main from "./components/Main";
-//import DeleteMe1 from "./components/DeleteMe1";
-//import DeleteMe2 from "./components/DeleteMe2";
 import Confirmation from "./components/Confirmation";
 import reportWebVitals from "./reportWebVitals";
 import Mobilepay from "./components/Mobilepay";
@@ -17,10 +15,8 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/beers" element={<Main />} />
-        {/* <Route path="/creditcard" element={<Creditcard />} />
-        <Route path="/mobilepay" element={<Mobilepay />} /> */}
-        <Route path="/beers/creditCard" element={<Creditcard />} />
-        <Route path="/beers/mobilePay" element={<Mobilepay />} />
+        <Route path="/creditcard" element={<Creditcard />} />
+        <Route path="/mobilepay" element={<Mobilepay />} />
         <Route path="/confirmation" element={<Confirmation />} />
       </Routes>
     </BrowserRouter>
