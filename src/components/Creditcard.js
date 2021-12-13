@@ -57,10 +57,8 @@ function Creditcard() {
   const handleNumberBlur = (e) => {
     if (e.target.value.length < 19) {
       setNumberErr(true);
-      console.log("numberErr = true");
     } else {
       setNumberErr(false);
-      console.log("numberErr = false");
     }
   };
 
@@ -71,11 +69,8 @@ function Creditcard() {
   const handleExpiryBlur = (e) => {
     if (e.target.value.length < 5) {
       setExpiryErr(true);
-      console.log(expiry);
-      console.log("expiryErr = true");
     } else {
       setExpiryErr(false);
-      console.log("expiryErr = false");
     }
   };
 
@@ -86,10 +81,8 @@ function Creditcard() {
   const handleNameBlur = (e) => {
     if (e.target.value.length < 3) {
       setNameErr(true);
-      console.log("nameErr = true");
     } else {
       setNameErr(false);
-      console.log("nameErr = false");
     }
   };
 
@@ -100,10 +93,8 @@ function Creditcard() {
   const handleCvcBlur = (e) => {
     if (e.target.value.length < 3) {
       setCvcErr(true);
-      console.log("cvcErr = true");
     } else {
       setCvcErr(false);
-      console.log("cvcErr = false");
     }
   };
 

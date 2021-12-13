@@ -4,7 +4,7 @@ export const postOrder = async () => {
   const order = localStorage.getItem("order");
   console.log(order);
 
-  const endpoint = "https://foobar-ddo.herokuapp.com/order/";
+  const endpoint = "https://winter-foobar.herokuapp.com/order/";
 
   const options = {
     method: "POST",
