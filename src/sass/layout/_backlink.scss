@@ -5,6 +5,8 @@
 
   .link {
     font-size: b.$backlink-font-size;
+    text-decoration: none;
+    color: b.$main-font-color;
     cursor: pointer;
 
     img {

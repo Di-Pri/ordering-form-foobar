@@ -1,5 +1,6 @@
 export const postOrder = async () => {
   console.log("postOrder");
+
   const order = localStorage.getItem("order");
   console.log(order);
 

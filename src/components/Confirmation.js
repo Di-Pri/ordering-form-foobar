@@ -1,11 +1,27 @@
 import "../sass/layout/_confirmation.scss";
 import Header from "./Header";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Confirmation() {
+  let navigate = useNavigate();
+  const redirectToLanding = () => {
+    console.log("redirectToLanding");
+    navigate("/");
+  };
+
   const response = JSON.parse(localStorage.getItem("response"));
   const order = JSON.parse(localStorage.getItem("order"));
-  const beerItems = order.map((beer) => {
-    return <span>{`${beer.amount}x   ${beer.name}`}</span>;
+  const beerItems = order.map((beer, index) => {
+    return <span key={index}>{`${beer.amount}x   ${beer.name}`}</span>;
+  });
+
+  useEffect(() => {
+    setTimeout(() => {
+      localStorage.removeItem("order");
+      localStorage.removeItem("response");
+      redirectToLanding();
+    }, 15000);
   });
 
   return (

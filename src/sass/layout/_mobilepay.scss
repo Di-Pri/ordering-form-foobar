@@ -22,7 +22,18 @@ body {
   .picture {
     margin-top: calc(2rem + 1vw);
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: auto;
+    }
 
     img {
       max-width: 400px;

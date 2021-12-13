@@ -4,17 +4,14 @@ import Backlink from "./Backlink";
 import MaskedInput from "react-text-mask";
 import { useState, useRef, useEffect } from "react";
 import { postOrder } from "./../utilities/post.js";
+import { useNavigate } from "react-router-dom";
 
 function Creditcard() {
-  // to be deleted
-  localStorage.setItem(
-    "order",
-    JSON.stringify([
-      { name: "Hoppily Ever After", amount: 1 },
-      { name: "El Hefe", amount: 2 },
-    ])
-  );
-  // to be deleted end
+  let navigate = useNavigate();
+  const redirectToConfirmation = () => {
+    console.log("redirectToConfirmation");
+    navigate("/confirmation");
+  };
 
   const [number, setNumber] = useState("");
   const [numberErr, setNumberErr] = useState(false);
@@ -31,60 +28,25 @@ function Creditcard() {
   const cardNameRef = useRef("");
   const submitButton = useRef("");
 
+  const focusOnError = (errorField) => {
+    errorField.current.focus();
+  };
+
   useEffect(() => {
     if (number.length === 19) {
-      if (numberErr) {
-        if (nameErr) {
-          cardNameRef.current.focus();
-        } else if (expiryErr) {
-          cardExpiryRef.current.focus();
-        } else if (cvcErr) {
-          cardCvcRef.current.focus();
-        } else if (!cvcErr && !expiryErr && !nameErr) {
-          document.activeElement.blur();
-        }
-        setNumberErr(false);
-      } else {
-        cardNameRef.current.focus();
-      }
+      cardNameRef.current.focus();
     }
   }, [number]);
 
   useEffect(() => {
     if (expiry.length === 5) {
-      if (expiryErr) {
-        if (cvcErr) {
-          cardCvcRef.current.focus();
-        } else if (numberErr) {
-          cardNumberRef.current.focus();
-        } else if (nameErr) {
-          cardNameRef.current.focus();
-        } else if (!cvcErr && !numberErr && !nameErr) {
-          document.activeElement.blur();
-        }
-        setExpiryErr(false);
-      } else {
-        cardCvcRef.current.focus();
-      }
+      cardCvcRef.current.focus();
     }
   }, [expiry]);
 
   useEffect(() => {
     if (cvc.length === 3) {
-      if (cvcErr) {
-        if (numberErr) {
-          cardNumberRef.current.focus();
-        } else if (nameErr) {
-          cardNameRef.current.focus();
-        } else if (expiryErr) {
-          cardExpiryRef.current.focus();
-        } else if (!expiryErr && !numberErr && !nameErr) {
-          document.activeElement.blur();
-        }
-        setExpiryErr(false);
-      } else {
-        document.activeElement.blur();
-      }
+      document.activeElement.blur();
     }
   }, [cvc]);
 
@@ -95,8 +57,10 @@ function Creditcard() {
   const handleNumberBlur = (e) => {
     if (e.target.value.length < 19) {
       setNumberErr(true);
+      console.log("numberErr = true");
     } else {
       setNumberErr(false);
+      console.log("numberErr = false");
     }
   };
 
@@ -107,8 +71,11 @@ function Creditcard() {
   const handleExpiryBlur = (e) => {
     if (e.target.value.length < 5) {
       setExpiryErr(true);
+      console.log(expiry);
+      console.log("expiryErr = true");
     } else {
       setExpiryErr(false);
+      console.log("expiryErr = false");
     }
   };
 
@@ -119,8 +86,10 @@ function Creditcard() {
   const handleNameBlur = (e) => {
     if (e.target.value.length < 3) {
       setNameErr(true);
+      console.log("nameErr = true");
     } else {
       setNameErr(false);
+      console.log("nameErr = false");
     }
   };
 
@@ -131,25 +100,23 @@ function Creditcard() {
   const handleCvcBlur = (e) => {
     if (e.target.value.length < 3) {
       setCvcErr(true);
+      console.log("cvcErr = true");
     } else {
       setCvcErr(false);
+      console.log("cvcErr = false");
     }
   };
 
   const checkForErrors = () => {
-    if (numberErr) {
+    if (number.length < 19) {
       return cardNumberRef;
-    } else if (nameErr) {
+    } else if (name.length < 3) {
       return cardNameRef;
-    } else if (expiryErr) {
+    } else if (expiry.length < 5) {
       return cardExpiryRef;
-    } else if (cvcErr) {
+    } else if (cvc.length < 3) {
       return cardCvcRef;
     }
-  };
-
-  const focusOnError = (errorField) => {
-    errorField.current.focus();
   };
 
   const handleSubmit = async (e) => {
@@ -157,6 +124,7 @@ function Creditcard() {
     const errorField = checkForErrors();
     if (!errorField) {
       await postOrder();
+      redirectToConfirmation();
     } else {
       focusOnError(errorField);
     }
