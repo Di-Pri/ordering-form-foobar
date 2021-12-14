@@ -1,4 +1,3 @@
-import "../sass/layout/_creditcard.scss";
 import Header from "./Header";
 import Backlink from "./Backlink";
 import SuccessMessage from "./SuccessMessage";
@@ -147,36 +146,12 @@ function Creditcard() {
         <form>
           {/* card number input field starts here*/}
           <div className="line line_one">
-            <label
-              htmlFor="card-number"
-              ref={cardNumberRef}
-              className="label number"
-            >
+            <label htmlFor="card-number" ref={cardNumberRef} className="label number">
               Card number
             </label>
             <div className="input_wrapper">
               <MaskedInput
-                mask={[
-                  /[1-9]/,
-                  /\d/,
-                  /\d/,
-                  /\d/,
-                  " ",
-                  /\d/,
-                  /\d/,
-                  /\d/,
-                  /\d/,
-                  " ",
-                  /\d/,
-                  /\d/,
-                  /\d/,
-                  /\d/,
-                  " ",
-                  /\d/,
-                  /\d/,
-                  /\d/,
-                  /\d/,
-                ]}
+                mask={[/[1-9]/, /\d/, /\d/, /\d/, " ", /\d/, /\d/, /\d/, /\d/, " ", /\d/, /\d/, /\d/, /\d/, " ", /\d/, /\d/, /\d/, /\d/]}
                 autoFocus
                 className={`form-control ${numberErr ? "incomplete" : ""}`}
                 placeholder="1234 5678 9012 3456"
@@ -190,10 +165,7 @@ function Creditcard() {
               />
               <SuccessMessage show={number.length === 19} />
             </div>
-            <ErrorMessage
-              text={"Credit card number must be 16 digits"}
-              show={numberErr}
-            />
+            <ErrorMessage text={"Credit card number must be 16 digits"} show={numberErr} />
           </div>
           {/* card number input field ends here*/}
 
@@ -223,11 +195,7 @@ function Creditcard() {
           <div className="line line_three">
             {/* card expiry input field starts here*/}
             <div className="column_one">
-              <label
-                htmlFor="card-expiry"
-                className="label expiry"
-                ref={cardExpiryRef}
-              >
+              <label htmlFor="card-expiry" className="label expiry" ref={cardExpiryRef}>
                 Expiry date
               </label>
               <div className="input_wrapper">
@@ -245,10 +213,7 @@ function Creditcard() {
                 />
                 <SuccessMessage show={expiry.length === 5} />
               </div>
-              <ErrorMessage
-                text={"Expiry date must be 4 digits"}
-                show={expiryErr}
-              />
+              <ErrorMessage text={"Expiry date must be 4 digits"} show={expiryErr} />
             </div>
             {/* card expiry input field ends here*/}
 
@@ -272,22 +237,14 @@ function Creditcard() {
                 />
                 <SuccessMessage show={cvc.length === 3} />
               </div>
-              <ErrorMessage
-                text={"Security code must be 3 digits"}
-                show={cvcErr}
-              />
+              <ErrorMessage text={"Security code must be 3 digits"} show={cvcErr} />
             </div>
             {/* security code input field ends here*/}
           </div>
 
           {/* submit button starts here*/}
           <div className="line line_four">
-            <button
-              className="submit_btn"
-              type="submit"
-              ref={submitButton}
-              onClick={handleSubmit}
-            >
+            <button className="submit_btn" type="submit" ref={submitButton} onClick={handleSubmit}>
               order
             </button>
           </div>

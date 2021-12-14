@@ -1,5 +1,3 @@
-import "../sass/layout/_header.scss";
-
 function Header() {
   return (
     <header className="Header">

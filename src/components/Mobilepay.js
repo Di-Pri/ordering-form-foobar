@@ -1,4 +1,3 @@
-import "../sass/layout/_mobilepay.scss";
 import Header from "./Header";
 import Backlink from "./Backlink";
 import { postOrder } from "./../utilities/post.js";

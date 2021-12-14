@@ -1,4 +1,3 @@
-import "../sass/layout/_confirmation.scss";
 import Header from "./Header";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -30,10 +29,7 @@ function Confirmation() {
       <main>
         <div className="message">
           <h1>Thank you!</h1>
-          <p>
-            Your order has now been received by our staff and it will arrive
-            shortly.
-          </p>
+          <p>Your order has now been received by our staff and it will arrive shortly.</p>
         </div>
         <article id="order">
           <div className="wrapper">
