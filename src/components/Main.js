@@ -7,6 +7,7 @@ export default function Main() {
   const [products, setProducts] = useState([]);
   const [totalPriceBeers, setTotalPriceBeers] = useState(0);
   const [cartItems, setCartItems] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
   // Fetching data
   useEffect(() => {
@@ -35,25 +36,32 @@ export default function Main() {
     });
   }
 
+  // Incrementing the number of beers in the cart
   function addBeersToTotalPrice() {
     setTotalPriceBeers((oldTotalPriceBeers) => {
       return oldTotalPriceBeers + 1;
     });
   }
 
+  // Decrementing the number of beers in the cart
   function removeBeersFromTotalPrice() {
     setTotalPriceBeers((oldTotalPriceBeers) => {
       return oldTotalPriceBeers - 1;
     });
   }
 
+  // Adding beers to the cart
   function addToCart(productToAdd) {
+    if (errorMessage === "You need to select the beers") {
+      setErrorMessage("");
+    }
     setCartItems((oldCartItems) => {
       const newCartItems = oldCartItems.concat(productToAdd);
       return newCartItems;
     });
   }
 
+  //Removing beers from the cart
   function removeFromCart(productToRemove) {
     const indexOfFirstUnwantedItem = cartItems.findIndex((item) => item.name === productToRemove.name);
 
@@ -82,17 +90,7 @@ export default function Main() {
         removeFromCart={removeFromCart}
       />
       <TotalPrice totalPriceBeers={totalPriceBeers} />
-      <PaymentMethod />
+      <PaymentMethod cartItems={cartItems} setErrorMessage={setErrorMessage} errorMessage={errorMessage} />
     </div>
   );
 }
-
-// to be deleted
-// localStorage.setItem(
-//   "order",
-//   JSON.stringify([
-//     { name: "Mowintime", amount: 1 },
-//     { name: "Row 26", amount: 2 },
-//   ])
-// );
-// to be deleted end

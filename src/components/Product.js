@@ -22,7 +22,7 @@ export default function Product(props) {
       }
       return oldAmount + 1;
     });
-    // Adding beers to cart
+    // Calling functions to add beers to the cart
     if (amount < 99) {
       props.addBeersToTotalPrice();
       props.addToCart({
@@ -39,7 +39,7 @@ export default function Product(props) {
       }
       return 0;
     });
-    // Removing beers from cart
+    // Calling functions to remove beers from the cart
     if (amount > 0) {
       props.removeBeersFromTotalPrice();
       props.removeFromCart({

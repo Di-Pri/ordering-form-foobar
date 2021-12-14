@@ -8,7 +8,7 @@ export default function Landing() {
         <h1>
           Locally <br /> brewed <span>beer</span>
         </h1>
-        <img src="images/beer-landing.png" alt="Beer glass" />
+        <img src="images/elhefe.png" alt="Glass of beer" />
       </div>
       <nav>
         <Link className="order-now" to="/beers">

@@ -1,11 +1,15 @@
 @use "../base" as b;
 
-// Styling Order Now button
-
-.order-now {
+@mixin flex {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+// Styling Order Now button
+
+.order-now {
+  @include flex;
   border-radius: 15px;
   height: 70px;
   width: 300px;
@@ -27,16 +31,18 @@
 
 // Styling Plus and Minus buttons
 
-.plusMinus button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@mixin plus-minus {
+  @include flex;
   border: none;
   border-radius: 50px;
   width: 40px;
   height: 40px;
   background-color: b.$plus-minus-bg;
   box-shadow: 0px 0px 3px 1px #000;
+}
+
+.plusMinus button {
+  @include plus-minus;
 }
 
 @mixin minus {
@@ -60,25 +66,8 @@
 // Styling Close modal button
 
 .closeModal button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 50px;
-  width: 40px;
-  height: 40px;
-  background-color: b.$plus-minus-bg;
-  box-shadow: 0px 0px 3px 1px #000;
+  @include plus-minus;
   transform: rotate(45deg);
-}
-
-@mixin minus {
-  content: "";
-  position: absolute;
-  width: 25px;
-  height: 5px;
-  background-color: b.$plus-minus-color;
-  border-radius: 5px;
 }
 
 .closeModal button::before {
@@ -108,9 +97,7 @@
 
 .methods {
   border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex;
   box-shadow: 0px 0px 4px 2px #000;
   border-radius: 20px;
   background-color: b.$buttons-bg;
