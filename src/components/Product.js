@@ -11,7 +11,9 @@ export default function Product(props) {
   };
 
   // Setting path to images with the glasses
-  const beerImage = `images/${props.label}`;
+  const imageName = props.name.replaceAll(" ", "").toLowerCase();
+  const beerImagePng = `images/beers-png/${imageName}.png`;
+  const beerImageWebp = `images/beers-webp/${imageName}.webp`;
   const beerImageAlt = `Glass with ${props.name} label`;
 
   function plus() {
@@ -51,7 +53,11 @@ export default function Product(props) {
   return (
     <article className="Product">
       <section>
-        <img src={beerImage} alt={beerImageAlt} />
+        <picture>
+          <source type="image/webp" srcSet={beerImageWebp} />
+          <source type="image/png" srcSet={beerImagePng} />
+          <img src={beerImagePng} alt={beerImageAlt} />
+        </picture>
         <h2>{props.name}</h2>
         <h3>80 kr</h3>
         <button className="about" onClick={togglePopup}>
@@ -65,15 +71,16 @@ export default function Product(props) {
             alcohol={props.alc}
             category={props.category}
             label={props.label}
-            beerImage={beerImage}
+            beerImagePng={beerImagePng}
+            beerImageWebp={beerImageWebp}
             beerImageAlt={beerImageAlt}
           />
         )}
       </section>
       <section className="plusMinus">
-        <button onClick={plus}></button>
+        <button aria-label="plus sign" onClick={plus}></button>
         <p>{amount}</p>
-        <button onClick={minus}></button>
+        <button aria-label="minus sign" onClick={minus}></button>
       </section>
     </article>
   );

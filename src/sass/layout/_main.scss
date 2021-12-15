@@ -32,7 +32,7 @@ $font-weight: 400;
   }
   img {
     width: 160px;
-    height: auto;
+    height: 308px;
   }
   section:nth-of-type(1) {
     width: 250px;
@@ -120,6 +120,7 @@ $font-weight: 400;
     }
     img {
       width: calc(30px + 26vw);
+      height: calc(58px + 50vw);
     }
     .plusMinus {
       margin-top: calc(15vw - 10px);
